@@ -1,4 +1,3 @@
-# ScapeNode
 ## Re:CREATORS
 ```
 The loving words we say hide the undertones of envy.
