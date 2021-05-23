@@ -1,0 +1,25 @@
+{
+  "name": "scapenode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TakizawaTeam/ScapeNode.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/TakizawaTeam/ScapeNode/issues"
+  },
+  "homepage": "https://github.com/TakizawaTeam/ScapeNode#readme",
+  "dependencies": {
+    "fs-extra": "^10.0.0",
+    "node-repl-await": "^0.1.2",
+    "simple-git": "^2.39.0",
+    "ws": "^7.4.5"
+  }
+}
