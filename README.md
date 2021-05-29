@@ -15,4 +15,4 @@ As we get distracted, we lose originality.
 ## develop
 1. node server.js
 2. open terminal.html
-3. > await initialize();
+3. \> await initialize();
