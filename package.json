@@ -18,6 +18,7 @@
   "homepage": "https://github.com/TakizawaTeam/ScapeNode#readme",
   "dependencies": {
     "fs-extra": "^10.0.0",
+    "mime-types": "^2.1.30",
     "node-repl-await": "^0.1.2",
     "simple-git": "^2.39.0",
     "ws": "^7.4.5"

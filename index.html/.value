@@ -1,0 +1,11 @@
+<head>
+  <title>コレクション管理</title>
+  <meta charset="utf-8"/>
+</head>
+<body>
+  <h2>コンテンツ</h2>
+
+  <script>
+  console.log("コレクション管理ページ");
+  </script>
+</body>
