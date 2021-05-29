@@ -10,4 +10,9 @@ As we get distracted, we lose originality.
 
 ## web
 1. node server.js
+2. open http://localhost:5001/index.html
+
+## develop
+1. node server.js
 2. open terminal.html
+3. > await initialize();
