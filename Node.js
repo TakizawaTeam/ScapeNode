@@ -35,6 +35,10 @@ module.exports = (()=>{
     repo = null;
     return `initialize: ${_path}`;
   };
+  clone = async (url, _path="")=>{
+    if(!!_path.length) return await Git().clone(url, _path);
+    return await Git().clone(url);
+  };
   checkout = async (_path="Database")=>{
     repo = null; root = ""; current = "";
     if(!await exist(ex_path(_path))) return null;
