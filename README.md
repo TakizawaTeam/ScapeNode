@@ -16,3 +16,7 @@ As we get distracted, we lose originality.
 1. node server.js
 2. open terminal.html
 3. \> await initialize();
+
+## workspace
+1. node server.js
+2. open http://localhost:5001/workspace/index.html

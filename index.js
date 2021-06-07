@@ -4,8 +4,8 @@ const Nodefile = require('./Nodefile.json');
 
 (async ()=>{
   // TestDatabase
-  await initialize("TestDatabase");
-  await checkout("TestDatabase");
+  await initialize("Database");
+  await checkout("Database");
   await correct(async function(){
     if(await exist("user")) await remove("user");
     await make("user");

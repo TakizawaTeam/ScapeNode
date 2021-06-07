@@ -4,8 +4,56 @@
 </head>
 <body>
   <h2>コンテンツ</h2>
+  <div id="main"></div>
 
   <script>
-  console.log("コレクション管理ページ");
+  const start = async ask=>{
+    await ask(`await checkout("Database");`);
+    await ask(`await change("user/seresonn_no9@yahoo.co.jp/echo");`);
+    document.querySelector("#main").innerText = await ask(`await catenate();`);
+  };
+
+  const COMMAND_LOG = true; // ログ出力
+  const bgf_color = (bg='white',f='black')=>`color:${f};background-color:${bg};`;
+  const output_log = (target=null, style=bgf_color("#335","#DDE"))=>{
+    if(typeof target==='object') target = JSON.stringify(target);
+    console.log(`%c${target}`, style);
+  };
+
+  const str_var = str=>(new Function("return " + str))(); // ただの文字列をJSに変換
+  const remove_prompt = m=>{ // プロンプト用の出力削除
+    m = m.split("\n"); m.pop(); m = m.join("\n");
+    return str_var(m);
+  };
+
+  let server = null;
+  let opened = false;
+  let ask = null;
+  window.onload = function(){
+    server = new WebSocket(`ws://${this.location.host}/repl`);
+    ask = async q=>{
+      if(!opened || !server) return null;
+      server.send(q);
+      if(COMMAND_LOG) output_log(`$ ${q}`);
+      return await new Promise((res,rej)=>{
+        server.onmessage = function(e){
+          m = remove_prompt(e.data);
+          if(typeof m!=='undefined'){
+            if(COMMAND_LOG) output_log(m);
+            res(m);
+          }
+        };
+      });
+    };
+    server.onopen = async function(e){
+      opened=true;
+      console.log(`ws://${location.host}/repl connected!`);
+      await start(ask);
+    };
+    server.onclose = async function(e){
+      opened=false;
+      console.log(`ws://${location.host}/repl disconnected!`);
+    };
+  };
   </script>
 </body>
