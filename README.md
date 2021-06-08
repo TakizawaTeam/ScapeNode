@@ -8,14 +8,9 @@ As we get distracted, we lose originality.
 1. npm i
 2. node index.js
 
-## web
-1. node server.js
-2. open http://localhost:5001/index.html
-
 ## develop
 1. node server.js
-2. open terminal.html
-3. \> await initialize();
+2. open http://localhost:5001/index.html
 
 ## workspace
 1. node server.js
