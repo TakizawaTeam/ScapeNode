@@ -72,7 +72,7 @@ const stat = async _path=>await fs.stat(_path).catch(()=>null);
   });
   server.listen(config.http.port, function(){
     console.log(`run server!`);
-    console.log(`  http://localhost:${config.http.port}/index.html`);
+    console.log(`  http://localhost:${config.http.port}/workspace/index.html`);
     console.log(`  ws://localhost:${config.repl.port}/[echo,repl]`);
   });
 })({
