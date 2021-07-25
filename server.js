@@ -62,7 +62,7 @@ const stat = async _path=>await fs.stat(_path).catch(()=>null);
     if(req.url=='/'){}
     else if(req.url=='/echo'){ set_result = async function(m){ wso.send(m); }; }
     else if(req.url=='/repl'){
-      const client = net.connect(config.repl.port, config.repl.server, function(){});
+      const client = net.connect(config.repl.port);
       client.on('data', function(data){ wso.send(''+data); });
       set_result = async function(m){ client.write(m+"\n"); };
       set_close = async function(){};
