@@ -29,23 +29,23 @@ module.exports = (()=>{
     repo = Git(_path);
     await repo.init();
     await repo.add('.value');
-    await repo.addConfig("user.name", "dummy")
-    await repo.addConfig("user.email", "dummy")
+    await repo.addConfig("user.name", "dummy");
+    await repo.addConfig("user.email", "dummy");
     await repo.commit("first commit!");
     repo = null;
-    return `initialize: ${_path}`;
+    return `Completed initialize: ${_path}`;
   };
   clone = async (url, _path="")=>{
     if(!!_path.length) return await Git().clone(url, _path);
     return await Git().clone(url);
   };
-  checkout = async (_path="Database")=>{
+  checkin = async (_path="Database")=>{
     repo = null; root = ""; current = "";
     if(!await exist(ex_path(_path))) return null;
     repo = Git(_path);
     root = _path;
     current = "";
-    return `checkout: ${_path}`;
+    return `Completed checkin: ${_path}`;
   };
   rollback = async ()=>{if(repo) await repo.clean("dfx");}
   commit = async ()=>{
@@ -75,12 +75,12 @@ module.exports = (()=>{
     await fs.mkdir(ex_path(_path), {recursive:true}).catch(()=>null);
     _path = path.join(ex_path(_path), ".value");
     await fs.writeFile(_path, "");
-    return `create: ${_path}`;
+    return `Completed create: ${_path}`;
   };
   set = async (value="",_path="")=>{
     _path = path.join(ex_path(_path), ".value");
     await fs.writeFile(_path, value).catch(()=>null);
-    return `write: ${value} ${_path}`;
+    return `Completed write: ${value} ${_path}`;
   };
   catenate = async _path=>{
     _path = path.join(ex_path(_path), ".value");
