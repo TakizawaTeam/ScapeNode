@@ -23,6 +23,12 @@ module.exports = (()=>{
   current = "";
 
   // database
+  list = async ()=>{
+    const file_list = await fs.readdir("./").catch(()=>[]);
+    return (await Promise.all( file_list.map(async name=>{
+      return !!await fs.stat(`./${name}/.value`).catch(()=>null) ? name : null;
+    }) )).filter(name=>!!name);
+  };
   initialize = async (_path="Database")=>{
     _path = ex_path(_path);
     if(!await exist(_path)) await make(_path);
@@ -67,8 +73,8 @@ module.exports = (()=>{
   ex_path = (_path="")=>path.resolve(path.join(root, current), _path); // Lorentz
   exist = async _path=>!!await statistics(_path);
   child = async _path=>{
-    list = await fs.readdir(ex_path(_path)).catch(()=>[]);
-    return list.filter(name=>!/^\./.test(name)); //隠しファイルは非表示
+    const file_list = await fs.readdir(ex_path(_path)).catch(()=>[]);
+    return file_list.filter(name=>!/^\./.test(name)); //隠しファイルは非表示
   };
   make = async _path=>{
     if(await exist(_path)) return null;
